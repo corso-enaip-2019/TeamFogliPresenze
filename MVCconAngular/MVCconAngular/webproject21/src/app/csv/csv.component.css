@@ -1,0 +1,19 @@
+*{
+    display: block;
+    text-align: center;
+}
+
+div{
+    margin-left: 150px;
+}
+
+h1{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 300%;
+    text-align: center;
+}
+.buttoncont{
+    display: block;
+    margin: 50px auto;
+    width: 100px;
+}
