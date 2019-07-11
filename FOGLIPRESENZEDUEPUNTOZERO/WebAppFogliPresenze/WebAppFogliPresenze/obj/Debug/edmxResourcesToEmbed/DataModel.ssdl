@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="WebAppPresenzeModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Dipendenti">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nome" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Cognome" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Sede" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="CodiceTeam" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="FogliPresenze">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DipendenteId" Type="int" Nullable="false" />
+    <Property Name="Anno" Type="int" Nullable="false" />
+    <Property Name="Mese" Type="int" Nullable="false" />
+    <Property Name="Stato" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="OreLavorative">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FoglioPresenzeId" Type="int" Nullable="false" />
+    <Property Name="Giorno" Type="int" Nullable="false" />
+    <Property Name="Quantita" Type="int" Nullable="false" />
+    <Property Name="Tipo" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_FogliPresenze_Dipendenti">
+    <End Role="Dipendenti" Type="Self.Dipendenti" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="FogliPresenze" Type="Self.FogliPresenze" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Dipendenti">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="FogliPresenze">
+        <PropertyRef Name="DipendenteId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OreLavorative_FogliPresenze">
+    <End Role="FogliPresenze" Type="Self.FogliPresenze" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="OreLavorative" Type="Self.OreLavorative" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FogliPresenze">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="OreLavorative">
+        <PropertyRef Name="FoglioPresenzeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="WebAppPresenzeModelStoreContainer">
+    <EntitySet Name="Dipendenti" EntityType="Self.Dipendenti" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="FogliPresenze" EntityType="Self.FogliPresenze" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="OreLavorative" EntityType="Self.OreLavorative" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_FogliPresenze_Dipendenti" Association="Self.FK_FogliPresenze_Dipendenti">
+      <End Role="Dipendenti" EntitySet="Dipendenti" />
+      <End Role="FogliPresenze" EntitySet="FogliPresenze" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OreLavorative_FogliPresenze" Association="Self.FK_OreLavorative_FogliPresenze">
+      <End Role="FogliPresenze" EntitySet="FogliPresenze" />
+      <End Role="OreLavorative" EntitySet="OreLavorative" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

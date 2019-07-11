@@ -1,0 +1,28 @@
+<div class = "div">
+<h1>Dipendenti Euris</h1>
+
+<input type="text" class="marginedInput" [(ngModel)]="userFilter.Nome" placeholder="Nome">
+<input type="text" class="marginedInput" [(ngModel)]="userFilter.Cognome" placeholder="Cogome">
+<input type="text" class="marginedInput" [(ngModel)]="userFilter.Sede" placeholder="Sede">
+<input type="text" class="marginedInput" [(ngModel)]="userFilter.CodiceTeam" placeholder="Codice Team">
+
+<table id="sidebar-wrapper" class="table table-hover table-bordered">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col" >Nome</th>
+        <th scope="col">Cognome</th>
+        <th scope="col">Sede</th>
+        <th scope="col">Codice Team</th>
+      </tr>
+    </thead>
+    <tbody >
+      <tr   *ngFor="let dipendente of dipendenti | filterBy: userFilter">
+        <td><div (click)="onSelect(dipendente)">{{dipendente.Nome}}</div></td>
+        <td>{{dipendente.Cognome}}</td>
+        <td>{{dipendente.Sede}}</td>
+        <td>{{dipendente.CodiceTeam}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+

@@ -1,0 +1,32 @@
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+  }
+  th{
+    color: white;
+    background-color: #003d7e;
+  }
+  td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+  }
+  
+  tr:nth-child(even) {
+    background-color: #dddddd;
+  }
+
+  .marginedInput {
+    margin: 0px 10px 10px 0px;
+    
+  }
+
+  .div {
+    margin-left: 150px;
+  }
+
+  .marginedInput {
+    margin: 0px 10px 10px 0px;
+    
+  }

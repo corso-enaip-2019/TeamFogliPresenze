@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="WebAppPresenzeModelStoreContainer" CdmEntityContainer="WebAppPresenzeEntities">
+    <EntitySetMapping Name="Dipendentis">
+      <EntityTypeMapping TypeName="WebAppPresenzeModel.Dipendenti">
+        <MappingFragment StoreEntitySet="Dipendenti">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Nome" ColumnName="Nome" />
+          <ScalarProperty Name="Cognome" ColumnName="Cognome" />
+          <ScalarProperty Name="Sede" ColumnName="Sede" />
+          <ScalarProperty Name="CodiceTeam" ColumnName="CodiceTeam" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FogliPresenze">
+      <EntityTypeMapping TypeName="WebAppPresenzeModel.FogliPresenze">
+        <MappingFragment StoreEntitySet="FogliPresenze">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="DipendenteId" ColumnName="DipendenteId" />
+          <ScalarProperty Name="Anno" ColumnName="Anno" />
+          <ScalarProperty Name="Mese" ColumnName="Mese" />
+          <ScalarProperty Name="Stato" ColumnName="Stato" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OreLavorative">
+      <EntityTypeMapping TypeName="WebAppPresenzeModel.OreLavorative">
+        <MappingFragment StoreEntitySet="OreLavorative">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="FoglioPresenzeId" ColumnName="FoglioPresenzeId" />
+          <ScalarProperty Name="Giorno" ColumnName="Giorno" />
+          <ScalarProperty Name="Quantita" ColumnName="Quantita" />
+          <ScalarProperty Name="Tipo" ColumnName="Tipo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

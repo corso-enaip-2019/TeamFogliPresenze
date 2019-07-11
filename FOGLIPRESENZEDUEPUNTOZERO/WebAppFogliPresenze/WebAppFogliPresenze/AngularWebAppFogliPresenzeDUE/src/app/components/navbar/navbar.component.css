@@ -1,0 +1,15 @@
+* {
+    position: relative;
+    background-color: #003d7e;
+    color:#999999;
+    margin: 0;
+    height: 60px;
+    border-top: 1px solid #373737;
+    border-bottom: 1px solid #1A1A1A;
+}
+
+img {
+    height: 98%;
+    margin-left: 150px;
+    border-right: 1px solid #1A1A1A;
+}
