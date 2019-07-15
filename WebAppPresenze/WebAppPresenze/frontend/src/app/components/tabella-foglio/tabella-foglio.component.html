@@ -1,0 +1,38 @@
+<h2 *ngIf="isLoaded">{{nomeDip}} {{cognomeDip}}: {{foglio.Mese}}/{{foglio.Anno}}</h2>
+<h2 *ngIf="!isLoaded">Caricamento...</h2>
+
+<ul class="list-inline">
+  <li class="list-inline-item"><button class="btn" [disabled]="!isLoaded" [ngClass]="{'btn-success': !isChanged, 'btn-warning': isChanged }" (click)="saveToDb()">Salva</button></li>
+  <li class="list-inline-item"><button class="btn btn-info" [disabled]="!isLoaded" (click)="confirmReload()">Ricarica</button></li>
+  <li class="list-inline-item"><button class="btn btn-dark" (click)="goBack()">Indietro</button></li>
+</ul>
+
+<table class="table-bordered text-nowrap" *ngIf="isLoaded">
+  <tr class="text-center text-monospace">
+    <th>Giorno della</th>
+    <th *ngFor="let tot of foglio.TotaliGiornalieri; index as d" class="text-capitalize">{{d+1}}</th>
+    <th>Totale</th>
+  </tr>
+  <tr class="text-center text-monospace">
+    <th>Settimana</th>
+    <th *ngFor="let tot of foglio.TotaliGiornalieri; index as d">{{getName(d+1)}}</th>
+    <th>Mese</th>
+  </tr>
+  <tr *ngFor="let cat of foglio.TotaliCategorie"> 
+    <td>{{cat.Nome}}</td> 
+    <td *ngFor="let tot of foglio.TotaliGiornalieri; index as d" (click)="setEdit(d+1, cat)">
+      <div *ngIf="!isEdit(d+1, cat)">{{getHours(d+1,cat.Nome)}}</div>
+      <input type="number" class="form-control edit-cell" min="0" max="8" [(ngModel)]="editValue" *ngIf="isEdit(d+1, cat)" (keyup.enter)="saveValue()" (keyup.escape)="setEdit(-1, null)" />
+    </td>
+    <td>
+      <div *ngIf="cat.OreTotali != 0">{{cat.OreTotali}}</div>
+    </td>
+  </tr>
+  <tr>
+    <td>Totali Giornalieri</td>
+    <td *ngFor="let tot of foglio.TotaliGiornalieri; index as d">
+      <div *ngIf="tot != 0 || !isFestive(d+1)" [ngClass]="{'bg-danger': tot != 8 || tot > 0 && isFestive(d+1)}">{{tot}}</div>
+    </td>
+    <td>{{getTotal()}}</td>
+  </tr>
+</table>

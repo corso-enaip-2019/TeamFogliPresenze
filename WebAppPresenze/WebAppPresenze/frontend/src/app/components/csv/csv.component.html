@@ -1,0 +1,6 @@
+<h5>Scaricare il CSV di tutti i fogli presenze?</h5>
+
+<button class="btn btn-primary" role="group" aria-label="Basic example" [disabled]="wait" (click)="downloadCSV()">
+    <div *ngIf="wait">Attendi...</div>
+    <div *ngIf="!wait">Scarica</div>
+</button>

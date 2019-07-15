@@ -1,0 +1,32 @@
+<h1>Fogli Presenze per {{dipendenteNome}} {{dipendenteCognome}}</h1>
+
+<ul class="list-inline">
+    <li class="list-inline-item">
+        <select [(ngModel)]="userFilter.Mese" class="form-control" placeholder="Mese">
+            <option *ngFor="let month of months; index as i" value="{{i+1}}" class="text-capitalize">{{month}}</option>
+        </select>
+    </li>
+    <li class="list-inline-item"><input type="number" class="form-control" [(ngModel)]="userFilter.Anno" placeholder="Anno" /></li>
+</ul>
+
+<h2 *ngIf="!isLoaded">Caricamento...</h2>
+<table *ngIf="isLoaded" class="table table-hover table-bordered">
+    <thead class="thead-dark">
+        <tr>
+            <th>Id</th>
+            <th>Mese</th>
+            <th>Anno</th>
+            <th>Stato</th>
+            <th>Anomalie</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let foglio of listaFogli | filterBy: userFilter" (click)="onSelect(foglio)">
+            <td>{{foglio.Id}}</td>
+            <td class="text-capitalize">{{months[foglio.Mese - 1]}}</td>
+            <td>{{foglio.Anno}}</td>
+            <td>{{foglio.Stato}}</td>
+            <td><p *ngFor="let a of foglio.Anomalie">{{a}}</p></td>
+        </tr>
+    </tbody>
+</table>
