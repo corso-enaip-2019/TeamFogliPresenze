@@ -15,6 +15,7 @@ import { ListaDipendentiComponent } from './components/lista-dipendenti/lista-di
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { SidenavComponent } from './components/sidenav/sidenav.component';
+import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { SidenavComponent } from './components/sidenav/sidenav.component';
   ],
   providers: [
     DataService,
-    RoutingModule
+    RoutingModule,
+    {provide: LocationStrategy, useClass: HashLocationStrategy}
   ],
   bootstrap: [AppComponent]
 })

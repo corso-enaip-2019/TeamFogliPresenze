@@ -12,6 +12,7 @@ using WebAppPresenze.Models;
 namespace WebAppPresenze.Controllers
 {
     [RoutePrefix("api/presenze")]
+    [Authorize]
     public class FogliPresenzeController : BaseController
     {
         [HttpGet]

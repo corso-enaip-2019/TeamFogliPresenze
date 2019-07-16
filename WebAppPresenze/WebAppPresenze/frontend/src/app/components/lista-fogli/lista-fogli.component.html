@@ -3,6 +3,7 @@
 <ul class="list-inline">
     <li class="list-inline-item">
         <select [(ngModel)]="userFilter.Mese" class="form-control" placeholder="Mese">
+            <option>Mese</option>
             <option *ngFor="let month of months; index as i" value="{{i+1}}" class="text-capitalize">{{month}}</option>
         </select>
     </li>
